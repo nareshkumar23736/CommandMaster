@@ -1,0 +1,5 @@
+commands:
+  - name: test1
+    command:
+     - pwd
+    exec_per_sec: 10
