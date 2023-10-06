@@ -6,7 +6,7 @@ use std::{process::Command, time::{Instant, Duration}, thread::sleep};
 struct CommandExecutor {
     name: String,
     command: Vec<String>,
-    exec_per_sec: u32,
+    number_of_times: u32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -21,7 +21,7 @@ fn main() {
 
     for i in command_execution.commands.iter() {
         println!("Executing {} commands", i.name);
-        execute_commands(&i.command, i.exec_per_sec);
+        execute_commands(&i.command, i.number_of_times);
     }
 }
 
