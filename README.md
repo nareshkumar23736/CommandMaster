@@ -13,5 +13,7 @@ commands:
 ```
 
 name: Any arbitrary name that suites your needs
+
 command: under this define the commands you want to execute one after the other
+
 exec_per_sec: number of times the command needs to be executed.
