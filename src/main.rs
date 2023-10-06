@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 use serde_yaml;
-use std::{process::Command, time::{Instant, Duration}, thread::sleep};
+use std::{process::{Command, CommandArgs}, time::{Instant, Duration}, thread::sleep};
 
 #[derive(Debug, Serialize, Deserialize)]
 struct CommandExecutor {
@@ -25,27 +25,15 @@ fn main() {
     }
 }
 
-fn execute_commands(commands: &Vec<String>, ntimes: u32) {
-    for i in commands {
-        let args: Vec<&str> = i.split_whitespace().collect();
-        let delay_ns = 1_000_000_000 / ntimes;
-        let mut command_count = 0;
-
-
-        loop{
+fn execute_commands(commands: &Vec<String>,ntimes: u32){
+    for _ in 0..ntimes{
+        for i in commands{
+            let args: Vec<&str> = i.split_whitespace().collect();
+            let delay_ns = 1_000_000_000 / ntimes;
             let start_time = Instant::now();
-            command_count += 1;
-
-            if command_count == ntimes {
-                break;
-            }
-
             let out = Command::new(args[0])
-            .args(&args[1..=args.len() - 1])
-            .output();
-
-
-            
+                                             .args(&args[1..=args.len() - 1])
+                                             .output();
             match out {
                 Ok(out) => {
                     let stdout = String::from_utf8_lossy(&out.stdout);
@@ -75,8 +63,8 @@ fn execute_commands(commands: &Vec<String>, ntimes: u32) {
             } else {
                 Duration::from_secs(0)
             };
-            sleep(sleep_duration);
-        }
+            sleep(sleep_duration);            
 
+        }
     }
 }
