@@ -1,6 +1,6 @@
 CommandMaster is a simple command execution tool that can execute commands one after another n times.
 
-###How to use
+### How to use
 1)create command_executor.yaml file in the location where CommandMaster is placed
 Example content:
 
