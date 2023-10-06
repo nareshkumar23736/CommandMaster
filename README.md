@@ -9,7 +9,7 @@ commands:
   - name: test1
     command:
      - pwd
-    exec_per_sec: 10
+    number_of_times: 10
 ```
 
 name: Any arbitrary name that suites your needs
