@@ -9,6 +9,7 @@ commands:
   - name: test1
     command:
      - pwd
+     - cmd2
     number_of_times: 10
 ```
 
